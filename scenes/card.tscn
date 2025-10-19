@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://j7a4xby75ujd" path="res://scripts/card.gd" id="2_biecq"]
 [ext_resource type="Texture2D" uid="uid://dq7pit44radce" path="res://assets/cards/clubs/6.png" id="2_ktuci"]
-[ext_resource type="Texture2D" uid="uid://bpplsqqhbpndy" path="res://assets/cards/SOLIUntitled_resized_39x55.jpg" id="3_ktuci"]
+[ext_resource type="Texture2D" uid="uid://heujr8jw5st8" path="res://assets/cards/back.png" id="3_ktuci"]
 
 [sub_resource type="Animation" id="Animation_rnwdy"]
 length = 0.001
@@ -53,6 +53,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_08u5k"]
@@ -107,6 +119,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0, 0.0872665, -0.0872665, 0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_41imv"]
 resource_name = "flip_card"
@@ -159,6 +183,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.0872665, 0.0872665, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_kg30u"]
@@ -213,6 +249,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0, 0.0872665, -0.0872665, 0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ktuci"]
 resource_name = "vertical_flip_card_up"
@@ -266,6 +314,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0, -0.0872665, 0.0872665, 0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0nl41"]
 _data = {
@@ -279,15 +339,33 @@ _data = {
 [node name="Card" type="Control"]
 custom_minimum_size = Vector2(39, 10)
 layout_mode = 3
-anchors_preset = 0
-offset_left = -19.0
-offset_top = -5.0
-offset_right = 20.0
-offset_bottom = 5.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -140.0
+offset_right = -220.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(19, 5)
+mouse_filter = 1
 script = ExtResource("2_biecq")
 
-[node name="CardTexture" type="TextureRect" parent="."]
+[node name="Textures" type="Control" parent="."]
+custom_minimum_size = Vector2(39, 55)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardTexture" type="TextureRect" parent="Textures"]
 custom_minimum_size = Vector2(39, 55)
 layout_mode = 1
 anchors_preset = 8
@@ -296,16 +374,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -19.5
-offset_top = -5.599998
+offset_top = -27.5
 offset_right = 19.5
-offset_bottom = 49.4
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(19, 27)
 texture = ExtResource("2_ktuci")
 expand_mode = 1
 
-[node name="FlippedTexture" type="TextureRect" parent="."]
+[node name="FlippedTexture" type="TextureRect" parent="Textures"]
 visible = false
 custom_minimum_size = Vector2(39, 55)
 layout_mode = 1
@@ -315,9 +393,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -19.5
-offset_top = -5.5999966
+offset_top = -27.5
 offset_right = 19.5
-offset_bottom = 49.4
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(19, 27)
@@ -325,7 +403,9 @@ texture = ExtResource("3_ktuci")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../CardTexture")
+root_node = NodePath("../Textures/CardTexture")
 libraries = {
 &"": SubResource("AnimationLibrary_0nl41")
 }
+
+[connection signal="gui_input" from="Textures" to="." method="_on_textures_gui_input"]

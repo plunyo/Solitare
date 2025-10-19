@@ -1,15 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://df2csfnw4d7ap"]
+[gd_scene load_steps=9 format=3 uid="uid://df2csfnw4d7ap"]
 
+[ext_resource type="Script" uid="uid://cde8grhxdp27x" path="res://scenes/solitare.gd" id="1_ilgko"]
 [ext_resource type="PackedScene" uid="uid://cne7d3ltrplxs" path="res://scenes/card.tscn" id="1_rodhq"]
-[ext_resource type="Script" uid="uid://cmb7nxb2fmthr" path="res://scenes/tableau.gd" id="1_uyy7o"]
 [ext_resource type="Texture2D" uid="uid://q5jidoi3c36f" path="res://assets/cards/card_shadow.png" id="2_ilgko"]
-[ext_resource type="Script" uid="uid://i4kc3fqxjfpl" path="res://scripts/foundations.gd" id="2_uyy7o"]
+[ext_resource type="PackedScene" uid="uid://dt8s2pgnon56r" path="res://scenes/row.tscn" id="3_kd88f"]
 [ext_resource type="Texture2D" uid="uid://cs2ixgdaheqaa" path="res://assets/cards/large_icon_hearts.png" id="3_uyy7o"]
 [ext_resource type="Texture2D" uid="uid://cwhu5r0hvttic" path="res://assets/cards/large_icon_spades.png" id="4_kd88f"]
 [ext_resource type="Texture2D" uid="uid://dww6b6vubi2i7" path="res://assets/cards/large_icon_diamonds.png" id="5_y2kq1"]
 [ext_resource type="Texture2D" uid="uid://bxkh5igw8j32r" path="res://assets/cards/large_icon_clubs.png" id="6_m8yp3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ilgko"]
 
 [node name="Solitare" type="Control"]
 layout_mode = 3
@@ -18,8 +16,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ilgko")
+card_scene = ExtResource("1_rodhq")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,299 +28,130 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 theme_override_constants/minimum_grab_thickness = 1
-split_offset = 80
+split_offset = 765
 dragger_visibility = 2
 
-[node name="Stock" type="PanelContainer" parent="HSplitContainer"]
-layout_mode = 2
-
-[node name="HSplitContainer2" type="HSplitContainer" parent="HSplitContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 theme_override_constants/minimum_grab_thickness = 1
 split_offset = 300
 dragger_visibility = 2
 
-[node name="Tableau" type="PanelContainer" parent="HSplitContainer/HSplitContainer2"]
-layout_mode = 2
-script = ExtResource("1_uyy7o")
-
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/HSplitContainer2/Tableau"]
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_top = 35
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
+alignment = 1
 
-[node name="Row1" type="VBoxContainer" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer"]
+[node name="Row1" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
 layout_mode = 2
 
-[node name="OffsetY" type="HSeparator" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row1"]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ilgko")
-
-[node name="Card" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row1" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-rank = 5
-
-[node name="Row2" type="VBoxContainer" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer"]
+[node name="Row2" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
 layout_mode = 2
 
-[node name="OffsetY" type="HSeparator" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row2"]
+[node name="Row3" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
 layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ilgko")
 
-[node name="Card" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row2" instance=ExtResource("1_rodhq")]
+[node name="Row4" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
 layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
 
-[node name="Card2" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row2" instance=ExtResource("1_rodhq")]
+[node name="Row5" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
+layout_mode = 2
+
+[node name="Row6" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
+layout_mode = 2
+
+[node name="Row7" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="VSplitContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-rank = 2
 
-[node name="Row3" type="VBoxContainer" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="RedSuitFoundations" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HeartFoundation" type="CenterContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations"]
 layout_mode = 2
 
-[node name="OffsetY" type="HSeparator" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row3"]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ilgko")
-
-[node name="Card" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row3" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card2" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row3" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card3" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row3" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-rank = 6
-suit = 2
-
-[node name="Row4" type="VBoxContainer" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="OffsetY" type="HSeparator" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row4"]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ilgko")
-
-[node name="Card" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row4" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card2" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row4" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card3" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row4" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card4" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row4" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-rank = 4
-suit = 3
-
-[node name="Row5" type="VBoxContainer" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="OffsetY" type="HSeparator" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row5"]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ilgko")
-
-[node name="Card" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row5" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card2" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row5" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card3" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row5" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card4" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row5" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card5" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row5" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-rank = 10
-suit = 1
-
-[node name="Row6" type="VBoxContainer" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="OffsetY" type="HSeparator" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row6"]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ilgko")
-
-[node name="Card" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row6" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card2" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row6" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card3" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row6" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card4" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row6" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card5" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row6" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card6" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row6" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-rank = 11
-suit = 3
-
-[node name="Row7" type="VBoxContainer" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="OffsetY" type="HSeparator" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row7"]
-layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ilgko")
-
-[node name="Card" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row7" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card2" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row7" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card3" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row7" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card4" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row7" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card5" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row7" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card6" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row7" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-flipped = true
-
-[node name="Card7" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row7" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-rank = 6
-suit = 2
-
-[node name="Card8" parent="HSplitContainer/HSplitContainer2/Tableau/MarginContainer/HBoxContainer/Row7" instance=ExtResource("1_rodhq")]
-layout_mode = 2
-size_flags_horizontal = 3
-rank = 6
-suit = 2
-
-[node name="Foundations" type="PanelContainer" parent="HSplitContainer/HSplitContainer2"]
-layout_mode = 2
-script = ExtResource("2_uyy7o")
-
-[node name="CenterContainer" type="CenterContainer" parent="HSplitContainer/HSplitContainer2/Foundations"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer"]
-layout_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Shadow" type="TextureRect" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer/CenterContainer"]
+[node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/HeartFoundation"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = ExtResource("2_ilgko")
 
-[node name="Suit" type="TextureRect" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer/CenterContainer"]
+[node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/HeartFoundation"]
 modulate = Color(1, 1, 1, 0.2627451)
 layout_mode = 2
 texture = ExtResource("3_uyy7o")
 
-[node name="CenterContainer4" type="CenterContainer" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer"]
+[node name="DiamondFoundation" type="CenterContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations"]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer/CenterContainer4"]
+[node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/DiamondFoundation"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = ExtResource("2_ilgko")
 
-[node name="Suit" type="TextureRect" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer/CenterContainer4"]
-modulate = Color(1, 1, 1, 0.2627451)
-layout_mode = 2
-texture = ExtResource("4_kd88f")
-
-[node name="CenterContainer2" type="CenterContainer" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Shadow" type="TextureRect" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer/CenterContainer2"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-texture = ExtResource("2_ilgko")
-
-[node name="Suit" type="TextureRect" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer/CenterContainer2"]
+[node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/DiamondFoundation"]
 modulate = Color(1, 1, 1, 0.2627451)
 layout_mode = 2
 texture = ExtResource("5_y2kq1")
 
-[node name="CenterContainer3" type="CenterContainer" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer"]
+[node name="BlackSuitFoundations" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SpadeFoundation" type="CenterContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations"]
 layout_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer/CenterContainer3"]
+[node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/SpadeFoundation"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = ExtResource("2_ilgko")
 
-[node name="Suit" type="TextureRect" parent="HSplitContainer/HSplitContainer2/Foundations/CenterContainer/VBoxContainer/CenterContainer3"]
+[node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/SpadeFoundation"]
+modulate = Color(1, 1, 1, 0.2627451)
+layout_mode = 2
+texture = ExtResource("4_kd88f")
+
+[node name="ClubFoundation" type="CenterContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations"]
+layout_mode = 2
+
+[node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/ClubFoundation"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("2_ilgko")
+
+[node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/ClubFoundation"]
 modulate = Color(1, 1, 1, 0.2627451)
 layout_mode = 2
 texture = ExtResource("6_m8yp3")
+
+[node name="MarginContainer" type="MarginContainer" parent="VSplitContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Deck" type="Control" parent="VSplitContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(39, 55)
+layout_mode = 2
+
+[node name="DragLayer" type="Control" parent="."]
+anchors_preset = 0

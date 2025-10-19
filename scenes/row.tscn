@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt8s2pgnon56r"]
+
+[ext_resource type="Script" uid="uid://ckoy6q4a4psdq" path="res://scenes/row.gd" id="1_7024n"]
+
+[node name="Row" type="VBoxContainer"]
+custom_minimum_size = Vector2(39, 55)
+script = ExtResource("1_7024n")
