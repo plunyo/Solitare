@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://df2csfnw4d7ap"]
+[gd_scene load_steps=11 format=3 uid="uid://df2csfnw4d7ap"]
 
-[ext_resource type="Script" uid="uid://cde8grhxdp27x" path="res://scenes/solitare.gd" id="1_ilgko"]
+[ext_resource type="Script" uid="uid://cde8grhxdp27x" path="res://scripts/solitare.gd" id="1_ilgko"]
 [ext_resource type="PackedScene" uid="uid://cne7d3ltrplxs" path="res://scenes/card.tscn" id="1_rodhq"]
 [ext_resource type="Texture2D" uid="uid://q5jidoi3c36f" path="res://assets/cards/card_shadow.png" id="2_ilgko"]
 [ext_resource type="PackedScene" uid="uid://dt8s2pgnon56r" path="res://scenes/row.tscn" id="3_kd88f"]
 [ext_resource type="Texture2D" uid="uid://cs2ixgdaheqaa" path="res://assets/cards/large_icon_hearts.png" id="3_uyy7o"]
 [ext_resource type="Texture2D" uid="uid://cwhu5r0hvttic" path="res://assets/cards/large_icon_spades.png" id="4_kd88f"]
+[ext_resource type="Script" uid="uid://i4kc3fqxjfpl" path="res://scripts/foundations.gd" id="4_y2kq1"]
+[ext_resource type="Script" uid="uid://dxbilkp67to06" path="res://scripts/foundation.gd" id="5_m8yp3"]
 [ext_resource type="Texture2D" uid="uid://dww6b6vubi2i7" path="res://assets/cards/large_icon_diamonds.png" id="5_y2kq1"]
 [ext_resource type="Texture2D" uid="uid://bxkh5igw8j32r" path="res://assets/cards/large_icon_clubs.png" id="6_m8yp3"]
 
@@ -78,6 +80,7 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
+script = ExtResource("4_y2kq1")
 
 [node name="RedSuitFoundations" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -85,6 +88,8 @@ theme_override_constants/separation = 15
 
 [node name="HeartFoundation" type="CenterContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations"]
 layout_mode = 2
+script = ExtResource("5_m8yp3")
+suit = 2
 
 [node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/HeartFoundation"]
 modulate = Color(0, 0, 0, 1)
@@ -92,12 +97,14 @@ layout_mode = 2
 texture = ExtResource("2_ilgko")
 
 [node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/HeartFoundation"]
-modulate = Color(1, 1, 1, 0.2627451)
+modulate = Color(1, 1, 1, 0.262745)
 layout_mode = 2
 texture = ExtResource("3_uyy7o")
 
 [node name="DiamondFoundation" type="CenterContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations"]
 layout_mode = 2
+script = ExtResource("5_m8yp3")
+suit = 3
 
 [node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/DiamondFoundation"]
 modulate = Color(0, 0, 0, 1)
@@ -105,7 +112,7 @@ layout_mode = 2
 texture = ExtResource("2_ilgko")
 
 [node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/DiamondFoundation"]
-modulate = Color(1, 1, 1, 0.2627451)
+modulate = Color(1, 1, 1, 0.262745)
 layout_mode = 2
 texture = ExtResource("5_y2kq1")
 
@@ -115,6 +122,7 @@ theme_override_constants/separation = 15
 
 [node name="SpadeFoundation" type="CenterContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations"]
 layout_mode = 2
+script = ExtResource("5_m8yp3")
 
 [node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/SpadeFoundation"]
 modulate = Color(0, 0, 0, 1)
@@ -122,12 +130,14 @@ layout_mode = 2
 texture = ExtResource("2_ilgko")
 
 [node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/SpadeFoundation"]
-modulate = Color(1, 1, 1, 0.2627451)
+modulate = Color(1, 1, 1, 0.262745)
 layout_mode = 2
 texture = ExtResource("4_kd88f")
 
 [node name="ClubFoundation" type="CenterContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations"]
 layout_mode = 2
+script = ExtResource("5_m8yp3")
+suit = 1
 
 [node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/ClubFoundation"]
 modulate = Color(0, 0, 0, 1)
@@ -135,7 +145,7 @@ layout_mode = 2
 texture = ExtResource("2_ilgko")
 
 [node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/ClubFoundation"]
-modulate = Color(1, 1, 1, 0.2627451)
+modulate = Color(1, 1, 1, 0.262745)
 layout_mode = 2
 texture = ExtResource("6_m8yp3")
 

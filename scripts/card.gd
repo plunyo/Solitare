@@ -93,8 +93,12 @@ func stop_drag() -> void:
 
 	var game = get_tree().current_scene
 	var dest_pile = game.get_pile_under_mouse()
+	var dest_foundation: Foundation = game.get_foundation_under_mouse()
+
 	if dest_pile and dest_pile.can_accept_sequence(drag_sequence):
 		pile_ref.move_sequence_to(drag_sequence, dest_pile)
+	elif dest_foundation and dest_foundation.can_accept(drag_sequence[-1]):
+		dest_foundation.add_card(drag_sequence[-1])
 	else:
 		pile_ref.return_sequence(drag_sequence)
 

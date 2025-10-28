@@ -1,16 +1,22 @@
 extends Control
 
 const MAX_DECK_OFFSET: Vector2 = Vector2(3, 3)
-
 @export var card_scene: PackedScene
 
 @onready var drag_layer: Control = $DragLayer
 @onready var deck: Control = $VSplitContainer/MarginContainer/HBoxContainer/Deck
+
 @onready var rows: Array[VBoxContainer] = [
 	$VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row1, $VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row2,
 	$VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row3, $VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row4,
 	$VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row5, $VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row6,
 	$VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row7
+]
+@onready var foundations: Array[Foundation] = [
+	$VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/HeartFoundation,
+	$VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/DiamondFoundation,
+	$VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/SpadeFoundation,
+	$VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/ClubFoundation
 ]
 
 func _ready() -> void:
@@ -29,6 +35,13 @@ func get_pile_under_mouse() -> Row:
 	for row: Row in rows:
 		if row.is_mouse_over:
 			return row
+
+	return null
+
+func get_foundation_under_mouse() -> Foundation:
+	for foundation: Foundation in foundations:
+		if foundation.is_mouse_over:
+			return foundation
 
 	return null
 

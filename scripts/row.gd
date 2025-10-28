@@ -25,6 +25,9 @@ func move_sequence_to(drag_sequence: Array, dest_pile: Row) -> void:
 		remove_child(card)
 		dest_pile.add_child(card)
 
+	flip_last()
+
+func flip_last() -> void:
 	var cards: Array = get_children()
 	if cards.is_empty(): return
 

@@ -1,6 +1,6 @@
-extends PanelContainer
+extends VBoxContainer
 
-func _ready() -> void:
-	for foundation_shadow: CenterContainer in $CenterContainer/VBoxContainer.get_children():
-		for texture: TextureRect in foundation_shadow.get_children():
-			texture.rotation += deg_to_rad(randf_range(-5, 5))
+@onready var heart_foundation: CenterContainer = $RedSuitFoundations/HeartFoundation
+@onready var diamond_foundation: CenterContainer = $RedSuitFoundations/DiamondFoundation
+@onready var spade_foundation: CenterContainer = $BlackSuitFoundations/SpadeFoundation
+@onready var club_foundation: CenterContainer = $BlackSuitFoundations/ClubFoundation
