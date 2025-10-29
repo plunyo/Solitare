@@ -19,7 +19,6 @@ func get_sequence_from_card(card: Card) -> Array:
 
 	return cards.slice(start_index, cards.size())
 
-
 func move_sequence_to(drag_sequence: Array, dest_pile: Row) -> void:
 	for card: Card in drag_sequence:
 		remove_child(card)

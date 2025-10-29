@@ -337,20 +337,20 @@ _data = {
 }
 
 [node name="Card" type="Control"]
-custom_minimum_size = Vector2(39, 10)
+custom_minimum_size = Vector2(39, 5)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -259.0
-offset_top = -140.0
-offset_right = -220.0
+offset_left = -240.0
+offset_top = -135.0
+offset_right = -201.0
 offset_bottom = -130.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(19, 5)
+pivot_offset = Vector2(19, 2.5)
 mouse_filter = 1
 script = ExtResource("2_biecq")
 
@@ -362,6 +362,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -27.5
+offset_right = 19.5
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 

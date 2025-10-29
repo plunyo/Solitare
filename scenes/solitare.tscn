@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://df2csfnw4d7ap"]
+[gd_scene load_steps=12 format=3 uid="uid://df2csfnw4d7ap"]
 
 [ext_resource type="Script" uid="uid://cde8grhxdp27x" path="res://scripts/solitare.gd" id="1_ilgko"]
 [ext_resource type="PackedScene" uid="uid://cne7d3ltrplxs" path="res://scenes/card.tscn" id="1_rodhq"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://dxbilkp67to06" path="res://scripts/foundation.gd" id="5_m8yp3"]
 [ext_resource type="Texture2D" uid="uid://dww6b6vubi2i7" path="res://assets/cards/large_icon_diamonds.png" id="5_y2kq1"]
 [ext_resource type="Texture2D" uid="uid://bxkh5igw8j32r" path="res://assets/cards/large_icon_clubs.png" id="6_m8yp3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y2kq1"]
 
 [node name="Solitare" type="Control"]
 layout_mode = 3
@@ -43,7 +45,7 @@ dragger_visibility = 2
 [node name="MarginContainer" type="MarginContainer" parent="VSplitContainer/HSplitContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 35
+theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
@@ -55,23 +57,58 @@ alignment = 1
 [node name="Row1" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
 layout_mode = 2
 
+[node name="HSeparator" type="HSeparator" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row1"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y2kq1")
+
 [node name="Row2" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
 layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y2kq1")
 
 [node name="Row3" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
 layout_mode = 2
 
+[node name="HSeparator" type="HSeparator" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y2kq1")
+
 [node name="Row4" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
 layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row4"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y2kq1")
 
 [node name="Row5" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
 layout_mode = 2
 
+[node name="HSeparator" type="HSeparator" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row5"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y2kq1")
+
 [node name="Row6" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
 layout_mode = 2
 
+[node name="HSeparator" type="HSeparator" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row6"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y2kq1")
+
 [node name="Row7" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_kd88f")]
 layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row7"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y2kq1")
 
 [node name="CenterContainer" type="CenterContainer" parent="VSplitContainer/HSplitContainer"]
 layout_mode = 2
@@ -94,11 +131,13 @@ suit = 2
 [node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/HeartFoundation"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_ilgko")
 
 [node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/HeartFoundation"]
 modulate = Color(1, 1, 1, 0.262745)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("3_uyy7o")
 
 [node name="DiamondFoundation" type="CenterContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations"]
@@ -109,11 +148,13 @@ suit = 3
 [node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/DiamondFoundation"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_ilgko")
 
 [node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/RedSuitFoundations/DiamondFoundation"]
 modulate = Color(1, 1, 1, 0.262745)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("5_y2kq1")
 
 [node name="BlackSuitFoundations" type="HBoxContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer"]
@@ -127,11 +168,13 @@ script = ExtResource("5_m8yp3")
 [node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/SpadeFoundation"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_ilgko")
 
 [node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/SpadeFoundation"]
 modulate = Color(1, 1, 1, 0.262745)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("4_kd88f")
 
 [node name="ClubFoundation" type="CenterContainer" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations"]
@@ -142,11 +185,13 @@ suit = 1
 [node name="Shadow" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/ClubFoundation"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_ilgko")
 
 [node name="Suit" type="TextureRect" parent="VSplitContainer/HSplitContainer/CenterContainer/VBoxContainer/BlackSuitFoundations/ClubFoundation"]
 modulate = Color(1, 1, 1, 0.262745)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("6_m8yp3")
 
 [node name="MarginContainer" type="MarginContainer" parent="VSplitContainer"]
@@ -156,12 +201,16 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/MarginContainer"]
+[node name="StockContainer" type="HBoxContainer" parent="VSplitContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Deck" type="Control" parent="VSplitContainer/MarginContainer/HBoxContainer"]
+[node name="Deck" type="CenterContainer" parent="VSplitContainer/MarginContainer/StockContainer"]
 custom_minimum_size = Vector2(39, 55)
 layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VSplitContainer/MarginContainer/StockContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="DragLayer" type="Control" parent="."]
 anchors_preset = 0

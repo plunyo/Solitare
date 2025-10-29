@@ -4,7 +4,8 @@ const MAX_DECK_OFFSET: Vector2 = Vector2(3, 3)
 @export var card_scene: PackedScene
 
 @onready var drag_layer: Control = $DragLayer
-@onready var deck: Control = $VSplitContainer/MarginContainer/HBoxContainer/Deck
+@onready var stock_container: HBoxContainer = $VSplitContainer/MarginContainer/StockContainer
+@onready var deck: CenterContainer = $VSplitContainer/MarginContainer/StockContainer/Deck
 
 @onready var rows: Array[VBoxContainer] = [
 	$VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row1, $VSplitContainer/HSplitContainer/MarginContainer/HBoxContainer/Row2,
@@ -65,6 +66,49 @@ func deal() -> void:
 				card.flip()
 
 			card_index += 1
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_released() \
+	and deck.get_global_rect().has_point(get_global_mouse_position()):
+		
+		var max_stock := 10
+
+		# if deck has cards and waste isn't full
+		if deck.get_child_count() > 0 and stock_container.get_child_count() < max_stock:
+			var card := deck.get_child(0) as Card
+			deck.remove_child(card)
+			stock_container.add_child(card)
+			if card.face_down:
+				card.flip()
+
+		# if stock is full, take all waste back into deck
+		elif stock_container.get_child_count() >= max_stock:
+			await recycle_waste()
+
+func recycle_waste() -> void:
+	var waste := stock_container.get_children().filter(func(x) -> bool: return x is Card)
+	for i in range(waste.size() - 1, -1, -1):
+		var c := waste[i] as Card
+		if not c.face_down:
+			c.flip()
+
+		# get global position before removing
+		var start_pos = c.global_position
+		var end_pos = deck.global_position
+		
+		# temporarily keep it in the scene so tween works
+		c.reparent(get_tree().current_scene)
+		c.global_position = start_pos
+
+		var move_tween = get_tree().create_tween()
+		move_tween.tween_property(c, "global_position", end_pos, 0.1)
+		await move_tween.finished
+
+		# now reparent to deck after tween
+		c.reparent(deck)
+	
+	shuffle()
+
 
 
 func shuffle() -> void:
